@@ -28,7 +28,11 @@ public class Zombie : MonoBehaviour {
 	float gravity = 20.0f;
 	Vector3 moveDirection = Vector3.zero;
 
-
+	//Sound effects
+	public AudioClip zombieGrowl;
+	public AudioClip omNomNom;
+	public AudioClip zombieHit;
+	
 	// Use this for initialization
 	void Start () {
 		attackTime = Time.time;
@@ -94,6 +98,8 @@ public class Zombie : MonoBehaviour {
 		if (Time.time > attackTime){
 			Target.SendMessage("applyDamage", damage);
 		//	Debug.Log("The Enemy Has Attacked");
+			audio.clip = omNomNom;
+			audio.Play ();
 			attackTime = Time.time + attackRepeatTime;
 		}
 	}
@@ -107,6 +113,8 @@ public class Zombie : MonoBehaviour {
 	void bloody(){
 		if(framecounter < bloodyframes){
 			particlesystem.enableEmission = true;
+			audio.clip = zombieHit;
+			audio.Play ();
 		}
 		if (framecounter >= bloodyframes){
 			particlesystem.enableEmission = false;

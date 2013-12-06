@@ -12,6 +12,9 @@ public class Player_script : MonoBehaviour {
 	public Transform transform;
 	public Transform healthBox;
 	
+	// Sound effects
+	public AudioClip healthChime;
+	
 	// Use this for initialization
 	void Start () {
 	
@@ -25,8 +28,9 @@ public class Player_script : MonoBehaviour {
 		}
 		if(Player_Health <= 0){
 			Player_Health =0;
-			transform.position = new Vector3(100,17,10);
-			Player_Health = 100;
+			//transform.position = new Vector3(100,17,10);
+			//Player_Health = 100;
+			Application.LoadLevel("GameOverMenu");
 			
 		}
 		//Krabul monitoring
@@ -48,7 +52,8 @@ public class Player_script : MonoBehaviour {
 				p_health = 1;
 			}
 		}
-		
+		// Font size
+		GUI.skin.box.fontSize = 12;
 		//Health bar
 		GUI.Box( new Rect(5,5,Screen.width/10,20), "Health");
 		GUI.Box( new Rect(Screen.width/10+10 ,5,Screen.width /3 /(p_health),20), "" + Player_Health, Health_bar_GUI);
@@ -62,6 +67,8 @@ public class Player_script : MonoBehaviour {
 	}
 	void applyHealth(){
 		Player_Health += 25;
+		audio.clip = healthChime;
+		audio.Play();
 	}
 	void OnControllerColliderHit (ControllerColliderHit c){
 		c.gameObject.SendMessage("playerCollided",SendMessageOptions.DontRequireReceiver);
