@@ -27,12 +27,17 @@ public class Zombie : MonoBehaviour {
 
 	float gravity = 20.0f;
 	Vector3 moveDirection = Vector3.zero;
-
+	
 	//Sound effects
 	public AudioClip zombieGrowl;
 	public AudioClip omNomNom;
 	public AudioClip zombieHit;
-	
+	public AudioClip oispa;
+	System.Random rnd = new System.Random();
+	public bool aani = false;
+
+
+
 	// Use this for initialization
 	void Start () {
 		attackTime = Time.time;
@@ -40,6 +45,8 @@ public class Zombie : MonoBehaviour {
 		particlesystem.enableEmission = false;
 		particlesystem.startLifetime = 0.5f;
 		particleSystem.emissionRate = 200;
+		
+		Target = GameObject.Find("Player").transform;
 
 	
 	}
@@ -89,6 +96,17 @@ public class Zombie : MonoBehaviour {
 	
 		moveDirection = transform.forward;
 		moveDirection *= moveSpeed;
+		
+		while(!aani){
+		int clipno = rnd.Next(0,2);
+			if(clipno==1)
+				audio.clip = oispa;
+			else
+				audio.clip = zombieGrowl;
+			audio.Play();
+			aani = true;
+		}
+
 	
 		moveDirection.y -= gravity * Time.deltaTime;
 		controller.Move(moveDirection * Time.deltaTime);
@@ -98,8 +116,15 @@ public class Zombie : MonoBehaviour {
 		if (Time.time > attackTime){
 			Target.SendMessage("applyDamage", damage);
 		//	Debug.Log("The Enemy Has Attacked");
-			audio.clip = omNomNom;
+			
+			int clipno = rnd.Next(0,2);
+			if(clipno==1)
+				audio.clip = omNomNom;
+			else
+				audio.clip = zombieGrowl;
 			audio.Play ();
+			aani = false;
+
 			attackTime = Time.time + attackRepeatTime;
 		}
 	}
@@ -113,11 +138,21 @@ public class Zombie : MonoBehaviour {
 	void bloody(){
 		if(framecounter < bloodyframes){
 			particlesystem.enableEmission = true;
-			audio.clip = zombieHit;
-			audio.Play ();
+			
+			// Randomize the sound effect of zombie getting hit
+			int clipno = rnd.Next(0,2);
+			if(clipno==1)
+				audio.clip = zombieHit;
+			else
+				audio.clip = zombieGrowl;
+			audio.Play ();	
+
 		}
 		if (framecounter >= bloodyframes){
 			particlesystem.enableEmission = false;
 		}
 	}
+	
+	
+
 }

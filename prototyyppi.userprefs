@@ -1,16 +1,10 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Game_Data\Scripts\DontGoThroughThings.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Game_Data\Scripts\PopUpMsg.cs">
     <Files>
-      <File FileName="Assets\Game_Data\Scripts\Zombie.cs" Line="84" Column="4" />
-      <File FileName="Assets\GameOverMenu.cs" Line="29" Column="4" />
-      <File FileName="Assets\Standard Assets\Character Controllers\Sources\Scripts\FPSInputController.js" Line="25" Column="3" />
-      <File FileName="Assets\Game_Data\Scripts\health.cs" Line="22" Column="3" />
-      <File FileName="Assets\Game_Data\Scripts\Zombie2.cs" Line="83" Column="5" />
-      <File FileName="Assets\Standard Assets\Character Controllers\Sources\Scripts\CharacterMotor.js" Line="421" Column="70" />
-      <File FileName="Assets\Game_Data\Scripts\Bullet.cs" Line="14" Column="15" />
-      <File FileName="Assets\Game_Data\Scripts\Player_script.cs" Line="29" Column="6" />
-      <File FileName="Assets\Game_Data\Scripts\DontGoThroughThings.cs" Line="39" Column="31" />
+      <File FileName="Assets\Game_Data\Scripts\PopUpMsg.cs" Line="34" Column="3" />
+      <File FileName="Assets\Game_Data\Scripts\level2_loader.cs" Line="17" Column="27" />
+      <File FileName="Assets\Game_Data\Scripts\Player_script.cs" Line="34" Column="36" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

@@ -7,6 +7,9 @@ public class Gun : MonoBehaviour {
 	public float speed = 50f;
 	public AudioClip gunShot;
 	
+
+	
+	
 	// Use this for initialization
 	void Start () {
 	
@@ -19,6 +22,7 @@ public class Gun : MonoBehaviour {
 			inp.velocity = transform.TransformDirection(new Vector3(0,0,speed));
 			audio.clip = gunShot;
 			audio.Play();
+
 		}	
 	}
 }
